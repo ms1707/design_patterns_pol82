@@ -1,16 +1,24 @@
-# This is a sample Python script.
+# Przykład zastosowania metod klasowych
+# alternatywna konstrukcja obiektu (metoda fabrykująca)
+# domyślny konstruktor - __new__
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+class Cow:
+    def __init__(self, name, is_alive):
+        self.name = name
+        self.is_alive = is_alive
+
+    # Metoda fabrykująca
+    @classmethod
+    def create_alive_cow(cls, name):
+        obj = cls(name, is_alive=True)
+        return obj
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# To jest stworzenie obiektu klasy krowa
+c = Cow("Mućka", True)
 
+# To też jest stworzenie obiektu klasy krowa
+c2 = Cow.create_alive_cow("Milka")
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(c.name)
+print(c2.name)
